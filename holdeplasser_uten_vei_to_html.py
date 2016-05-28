@@ -7,6 +7,8 @@ import csv
 from datetime import datetime
 from collections import defaultdict
 from itertools import chain
+import logging
+logger = logging.getLogger('holdeplasser_uten_vei_to_html')
 
 import requests
 from jinja2 import Template
@@ -16,15 +18,19 @@ import codecs
 def open_utf8(filename, *args, **kwargs):
     return codecs.open(filename, *args, encoding="utf-8-sig", **kwargs)
 def read_utf8_file(filename):
+    logger.debug('reading %s', filename)
     with open_utf8(filename, 'r') as f:
         return f.read()
 def write_utf8_file(filename, content):
+    logger.debug('writing %s', filename)
     with open_utf8(filename, 'w') as f:
         return f.write(content)
     
 def get_spreadsheet():
+    logger.debug('requesting spredsheet')
     response = requests.get('https://docs.google.com/spreadsheets/d/12-m7neLrK9MmQnNfBYsZMWluiBwBPFGNhW98ErWlNfg/export?format=csv')
     response.raise_for_status()
+    logger.debug('returning spredsheet')    
     return response.content.split('\n')
 
 def generate_map(holdeplassId, lat, lon):
@@ -108,10 +114,11 @@ def main(template_dir='.', output_dir='.'):
         output_filename = '%s-holdeplass-uten-vei.html' % status
         output_filename_path = join(output_dir, output_filename)
         title = 'Holdeplasser med status "%s"' % status.capitalize()
-        print title
+        #print title
         info = u'csv filen <a href={0}>{0}</a> inneholder all informasjonen i tabellen under, denne kan åpnes i JOSM'.format(csvfile)
         render_and_write(output_filename, template, table=t, info=info, **kwargs)
 
+        logger.info('status = "%s": %s', status, len(t))
         index_info.append((output_filename, status, [status, len(t)]))
         total_length += len(t)
 
@@ -128,4 +135,6 @@ def main(template_dir='.', output_dir='.'):
     render_and_write(output_filename, index_template, table=index_info, header=header, info=info_index)
     
 if __name__ == '__main__':
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s;%(levelname)s;%(message)s")
+
     main()
