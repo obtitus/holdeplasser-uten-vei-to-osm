@@ -135,6 +135,8 @@ def main(template_dir='.', output_dir='.'):
     render_and_write(output_filename, index_template, table=index_info, header=header, info=info_index)
     
 if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO, format="%(asctime)s;%(levelname)s;%(message)s")
+    logging.basicConfig(level=logging.INFO,
+                        format="%(asctime)s:%(levelname)s:%(message)s",
+                        datefmt="%Y-%m-%d %H:%M:%S")
 
     main()
