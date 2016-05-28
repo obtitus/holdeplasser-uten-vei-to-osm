@@ -1,0 +1,2860 @@
+﻿<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Barnehagefakta til openstreetmap : Data for import/fletting av barnehageinformasjon til openstreetmap">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <!-- <link href="https://api.mapbox.com/mapbox.js/v2.2.2/mapbox.css" rel="stylesheet" /> -->    
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/leaflet.css"/>
+
+    <title></title>
+  </head>
+
+  <body>
+
+    <!-- <script src='https://api.mapbox.com/mapbox.js/v2.2.2/mapbox.js'></script> -->
+    <script src="javascripts/mapbox.js"></script>
+    <!-- For ajax call -->
+    <!-- <script src='https://code.jquery.com/jquery-1.11.0.min.js'></script> -->
+    <script src="javascripts/jquery-1.11.0.min.js"></script>
+    <!-- <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-osm/v0.1.0/leaflet-osm.js'></script> -->    
+    <!-- <script src="javascripts/leaflet-osm.js"></script> -->
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+
+    <script>
+    function create_map(name, lat, lon, osm_url) {
+	var map = L.map(name)
+	map.setView([lat, lon], 15);
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+	    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+	}).addTo(map);
+	// Highlight osm object
+	// Fixme use the overpass xml:
+	// if ((typeof osm_xml !== 'undefined') && (osm_xml !== null)) {
+	//     var layer = new L.OSM.DataLayer(osm_xml).addTo(map);
+	// }
+	
+	if ((typeof osm_url !== 'undefined') && (osm_url !== null)) {
+	    $.ajax({
+		url: osm_url, // on the form: "https://www.openstreetmap.org/api/0.6/[node/way/relation]/<id>[/full]"
+		dataType: "xml",
+		success: function (xml) {
+		    var layer = new L.OSM.DataLayer(xml).addTo(map);
+		    map.fitBounds(layer.getBounds(), {maxZoom:15});
+		}
+	    });
+	}
+    }
+    </script>
+    
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/obtitus/holdeplasser-uten-vei-to-osm">View on GitHub</a>
+
+	  <h1 id="project_title">Holdeplasser uten vei</h1>
+          <h2 id="project_tagline">For kartdugnad for Nasjonal Reiseplanlegger</h2>
+
+	  <a href="index.html" title="Tilbake til oversikt">
+            <section id="back">
+              Tilbake til oversikt
+            </section>
+	  </a>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+	  
+	</h1>
+	
+	<p>Sist oppdatert 2016-05-27 23:40</p>
+	
+	<h3>
+	  Åpne i JOSM (Java OpenStreetmap Editor)
+	</h3>
+	csv filen <a href=./ingen-holdeplass-uten-vei.csv>./ingen-holdeplass-uten-vei.csv</a> inneholder all informasjonen i tabellen under, denne kan åpnes i JOSM
+
+	<h3>
+	  Tabell 
+	</h3>
+  <table> <!--  class="layout display responsive-table" -->
+    <thead>
+      <tr>
+      <th>HoldeplassID</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>Jobbes med av</th>
+      <th>Status</th>
+      <th>Kommentar</th>
+      <th>Kart</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>14_1411821001</td>
+      <td>60.952007</td>
+      <td>4.8088264</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1411821001" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1411821001, 60.952007, 4.8088264, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18200060</td>
+      <td>65.86461</td>
+      <td>12.170567</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18200060" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18200060, 65.86461, 12.170567, null)</script></td>
+    </tr>
+    <tr>
+      <td>3_17033170</td>
+      <td>64.58704</td>
+      <td>11.223105</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map3_17033170" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map3_17033170, 64.58704, 11.223105, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1411482801</td>
+      <td>60.96527</td>
+      <td>4.9651113</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1411482801" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1411482801, 60.96527, 4.9651113, null)</script></td>
+    </tr>
+    <tr>
+      <td>4_16335237</td>
+      <td>64.32911</td>
+      <td>10.417335</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map4_16335237" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map4_16335237, 64.32911, 10.417335, null)</script></td>
+    </tr>
+    <tr>
+      <td>4_16335238</td>
+      <td>64.32361</td>
+      <td>10.387301</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map4_16335238" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map4_16335238, 64.32361, 10.387301, null)</script></td>
+    </tr>
+    <tr>
+      <td>4_16335236</td>
+      <td>64.33411</td>
+      <td>10.427773</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map4_16335236" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map4_16335236, 64.33411, 10.427773, null)</script></td>
+    </tr>
+    <tr>
+      <td>10_12111856</td>
+      <td>59.639878</td>
+      <td>5.881647</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map10_12111856" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map10_12111856, 59.639878, 5.881647, null)</script></td>
+    </tr>
+    <tr>
+      <td>10_12111857</td>
+      <td>59.639802</td>
+      <td>5.881716</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map10_12111857" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map10_12111857, 59.639802, 5.881716, null)</script></td>
+    </tr>
+    <tr>
+      <td>10_12111860</td>
+      <td>59.642338</td>
+      <td>5.865092</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map10_12111860" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map10_12111860, 59.642338, 5.865092, null)</script></td>
+    </tr>
+    <tr>
+      <td>10_12111861</td>
+      <td>59.642275</td>
+      <td>5.865118</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map10_12111861" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map10_12111861, 59.642275, 5.865118, null)</script></td>
+    </tr>
+    <tr>
+      <td>10_12111862</td>
+      <td>59.646475</td>
+      <td>5.849966</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map10_12111862" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map10_12111862, 59.646475, 5.849966, null)</script></td>
+    </tr>
+    <tr>
+      <td>13_20124900</td>
+      <td>70.262665</td>
+      <td>22.614681</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map13_20124900" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map13_20124900, 70.262665, 22.614681, null)</script></td>
+    </tr>
+    <tr>
+      <td>13_20124008</td>
+      <td>70.33845</td>
+      <td>22.831362</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map13_20124008" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map13_20124008, 70.33845, 22.831362, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18680079</td>
+      <td>68.80337</td>
+      <td>14.775119</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18680079" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18680079, 68.80337, 14.775119, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18680081</td>
+      <td>68.80349</td>
+      <td>14.840486</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18680081" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18680081, 68.80349, 14.840486, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18680082</td>
+      <td>68.79247</td>
+      <td>14.865565</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18680082" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18680082, 68.79247, 14.865565, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18680086</td>
+      <td>68.81624</td>
+      <td>14.898896</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18680086" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18680086, 68.81624, 14.898896, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18680083</td>
+      <td>68.78455</td>
+      <td>14.895388</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18680083" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18680083, 68.78455, 14.895388, null)</script></td>
+    </tr>
+    <tr>
+      <td>5_08171260</td>
+      <td>59.12385</td>
+      <td>8.992995</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map5_08171260" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map5_08171260, 59.12385, 8.992995, null)</script></td>
+    </tr>
+    <tr>
+      <td>5_08171270</td>
+      <td>59.13284</td>
+      <td>8.980465</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map5_08171270" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map5_08171270, 59.13284, 8.980465, null)</script></td>
+    </tr>
+    <tr>
+      <td>5_08171070</td>
+      <td>58.91619</td>
+      <td>9.152244</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map5_08171070" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map5_08171070, 58.91619, 9.152244, null)</script></td>
+    </tr>
+    <tr>
+      <td>11_0631021601</td>
+      <td>59.91806</td>
+      <td>9.40125</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map11_0631021601" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map11_0631021601, 59.91806, 9.40125, null)</script></td>
+    </tr>
+    <tr>
+      <td>11_0631022301</td>
+      <td>59.913097</td>
+      <td>9.392016</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map11_0631022301" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map11_0631022301, 59.913097, 9.392016, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1401205901</td>
+      <td>61.527367</td>
+      <td>5.5033846</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1401205901" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1401205901, 61.527367, 5.5033846, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1401205902</td>
+      <td>61.5274</td>
+      <td>5.5033617</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1401205902" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1401205902, 61.5274, 5.5033617, null)</script></td>
+    </tr>
+    <tr>
+      <td>13_20234200</td>
+      <td>70.61813</td>
+      <td>27.664343</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map13_20234200" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map13_20234200, 70.61813, 27.664343, null)</script></td>
+    </tr>
+    <tr>
+      <td>13_20234000</td>
+      <td>70.71583</td>
+      <td>28.07562</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map13_20234000" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map13_20234000, 70.71583, 28.07562, null)</script></td>
+    </tr>
+    <tr>
+      <td>3_17253590</td>
+      <td>64.14521</td>
+      <td>11.2338295</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map3_17253590" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map3_17253590, 64.14521, 11.2338295, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1401206101</td>
+      <td>61.526432</td>
+      <td>5.494324</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1401206101" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1401206101, 61.526432, 5.494324, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1401206102</td>
+      <td>61.526432</td>
+      <td>5.494343</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1401206102" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1401206102, 61.526432, 5.494343, null)</script></td>
+    </tr>
+    <tr>
+      <td>3_17193664</td>
+      <td>63.593163</td>
+      <td>10.916621</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map3_17193664" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map3_17193664, 63.593163, 10.916621, null)</script></td>
+    </tr>
+    <tr>
+      <td>3_17193689</td>
+      <td>63.61292</td>
+      <td>11.23836</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map3_17193689" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map3_17193689, 63.61292, 11.23836, null)</script></td>
+    </tr>
+    <tr>
+      <td>3_17193680</td>
+      <td>63.644352</td>
+      <td>11.09794</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map3_17193680" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map3_17193680, 63.644352, 11.09794, null)</script></td>
+    </tr>
+    <tr>
+      <td>3_17193687</td>
+      <td>63.618397</td>
+      <td>11.193388</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map3_17193687" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map3_17193687, 63.618397, 11.193388, null)</script></td>
+    </tr>
+    <tr>
+      <td>3_17192876</td>
+      <td>63.688328</td>
+      <td>11.1338215</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map3_17192876" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map3_17192876, 63.688328, 11.1338215, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18360089</td>
+      <td>66.55774</td>
+      <td>12.835735</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18360089" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18360089, 66.55774, 12.835735, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18360093</td>
+      <td>66.61482</td>
+      <td>12.990654</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18360093" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18360093, 66.61482, 12.990654, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18360095</td>
+      <td>66.57929</td>
+      <td>12.980853</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18360095" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18360095, 66.57929, 12.980853, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18360090</td>
+      <td>66.594475</td>
+      <td>12.658868</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18360090" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18360090, 66.594475, 12.658868, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18360045</td>
+      <td>66.594406</td>
+      <td>12.658174</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18360045" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18360045, 66.594406, 12.658174, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18360049</td>
+      <td>66.533005</td>
+      <td>13.03138</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18360049" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18360049, 66.533005, 13.03138, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18360052</td>
+      <td>66.76008</td>
+      <td>12.474667</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18360052" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18360052, 66.76008, 12.474667, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18360013</td>
+      <td>66.5582</td>
+      <td>12.836822</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18360013" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18360013, 66.5582, 12.836822, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18360029</td>
+      <td>66.574394</td>
+      <td>12.979053</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18360029" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18360029, 66.574394, 12.979053, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18360026</td>
+      <td>66.61482</td>
+      <td>12.990654</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18360026" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18360026, 66.61482, 12.990654, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18360036</td>
+      <td>66.579895</td>
+      <td>12.934352</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18360036" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18360036, 66.579895, 12.934352, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18040301</td>
+      <td>67.071915</td>
+      <td>14.97553</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18040301" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18040301, 67.071915, 14.97553, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18040353</td>
+      <td>67.30518</td>
+      <td>13.729608</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18040353" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18040353, 67.30518, 13.729608, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18040355</td>
+      <td>67.40549</td>
+      <td>13.901096</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18040355" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18040355, 67.40549, 13.901096, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18040357</td>
+      <td>67.42714</td>
+      <td>13.976223</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18040357" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18040357, 67.42714, 13.976223, null)</script></td>
+    </tr>
+    <tr>
+      <td>13_20303315</td>
+      <td>69.68567</td>
+      <td>30.3951</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map13_20303315" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map13_20303315, 69.68567, 30.3951, null)</script></td>
+    </tr>
+    <tr>
+      <td>4_16175787</td>
+      <td>63.63088</td>
+      <td>8.897531</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map4_16175787" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map4_16175787, 63.63088, 8.897531, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18320191</td>
+      <td>66.139114</td>
+      <td>14.055625</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18320191" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18320191, 66.139114, 14.055625, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18320198</td>
+      <td>66.20761</td>
+      <td>13.57363</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18320198" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18320198, 66.20761, 13.57363, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18320142</td>
+      <td>66.172554</td>
+      <td>14.070861</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18320142" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18320142, 66.172554, 14.070861, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18320075</td>
+      <td>65.898636</td>
+      <td>13.767121</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18320075" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18320075, 65.898636, 13.767121, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18150045</td>
+      <td>65.81882</td>
+      <td>12.040242</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18150045" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18150045, 65.81882, 12.040242, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18150046</td>
+      <td>65.76232</td>
+      <td>11.748053</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18150046" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18150046, 65.76232, 11.748053, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18150043</td>
+      <td>65.80633</td>
+      <td>11.990225</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18150043" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18150043, 65.80633, 11.990225, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1401816301</td>
+      <td>61.595345</td>
+      <td>4.9251127</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1401816301" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1401816301, 61.595345, 4.9251127, null)</script></td>
+    </tr>
+    <tr>
+      <td>12_04233766</td>
+      <td>60.48557</td>
+      <td>12.038181</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map12_04233766" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map12_04233766, 60.48557, 12.038181, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1401815401</td>
+      <td>61.57026</td>
+      <td>4.877353</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1401815401" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1401815401, 61.57026, 4.877353, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1401815101</td>
+      <td>61.591038</td>
+      <td>4.8726645</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1401815101" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1401815101, 61.591038, 4.8726645, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1439308201</td>
+      <td>61.888844</td>
+      <td>5.157926</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1439308201" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1439308201, 61.888844, 5.157926, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1401815701</td>
+      <td>61.578533</td>
+      <td>4.932189</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1401815701" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1401815701, 61.578533, 4.932189, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1439308401</td>
+      <td>61.894974</td>
+      <td>5.12879</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1439308401" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1439308401, 61.894974, 5.12879, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1401819001</td>
+      <td>61.63813</td>
+      <td>4.812866</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1401819001" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1401819001, 61.63813, 4.812866, null)</script></td>
+    </tr>
+    <tr>
+      <td>15_0502076502</td>
+      <td>60.86265</td>
+      <td>10.641619</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map15_0502076502" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map15_0502076502, 60.86265, 10.641619, null)</script></td>
+    </tr>
+    <tr>
+      <td>15_0502076501</td>
+      <td>60.862724</td>
+      <td>10.641732</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map15_0502076501" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map15_0502076501, 60.862724, 10.641732, null)</script></td>
+    </tr>
+    <tr>
+      <td>15_0502076402</td>
+      <td>60.86132</td>
+      <td>10.645675</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map15_0502076402" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map15_0502076402, 60.86132, 10.645675, null)</script></td>
+    </tr>
+    <tr>
+      <td>15_0502076401</td>
+      <td>60.86141</td>
+      <td>10.645716</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map15_0502076401" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map15_0502076401, 60.86141, 10.645716, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19154000</td>
+      <td>69.050514</td>
+      <td>16.53701</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19154000" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19154000, 69.050514, 16.53701, null)</script></td>
+    </tr>
+    <tr>
+      <td>5_08290125</td>
+      <td>59.438534</td>
+      <td>8.596597</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map5_08290125" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map5_08290125, 59.438534, 8.596597, null)</script></td>
+    </tr>
+    <tr>
+      <td>5_08290095</td>
+      <td>59.479797</td>
+      <td>8.481736</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map5_08290095" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map5_08290095, 59.479797, 8.481736, null)</script></td>
+    </tr>
+    <tr>
+      <td>13_20183040</td>
+      <td>71.00507</td>
+      <td>23.898064</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map13_20183040" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map13_20183040, 71.00507, 23.898064, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19436000</td>
+      <td>70.10323</td>
+      <td>21.594986</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19436000" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19436000, 70.10323, 21.594986, null)</script></td>
+    </tr>
+    <tr>
+      <td>13_20184004</td>
+      <td>70.991776</td>
+      <td>24.128101</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map13_20184004" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map13_20184004, 70.991776, 24.128101, null)</script></td>
+    </tr>
+    <tr>
+      <td>13_20184003</td>
+      <td>70.87373</td>
+      <td>24.936274</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map13_20184003" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map13_20184003, 70.87373, 24.936274, null)</script></td>
+    </tr>
+    <tr>
+      <td>13_20184005</td>
+      <td>71.08404</td>
+      <td>24.060432</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map13_20184005" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map13_20184005, 71.08404, 24.060432, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19265147</td>
+      <td>68.99516</td>
+      <td>17.404318</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19265147" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19265147, 68.99516, 17.404318, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18370135</td>
+      <td>66.80327</td>
+      <td>13.763557</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18370135" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18370135, 66.80327, 13.763557, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18650035</td>
+      <td>68.286224</td>
+      <td>14.206813</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18650035" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18650035, 68.286224, 14.206813, null)</script></td>
+    </tr>
+    <tr>
+      <td>12_04286269</td>
+      <td>61.41582</td>
+      <td>12.071161</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map12_04286269" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map12_04286269, 61.41582, 12.071161, null)</script></td>
+    </tr>
+    <tr>
+      <td>12_04286266</td>
+      <td>61.414677</td>
+      <td>12.058019</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map12_04286266" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map12_04286266, 61.414677, 12.058019, null)</script></td>
+    </tr>
+    <tr>
+      <td>12_04286057</td>
+      <td>61.191643</td>
+      <td>11.892844</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map12_04286057" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map12_04286057, 61.191643, 11.892844, null)</script></td>
+    </tr>
+    <tr>
+      <td>4_15057024</td>
+      <td>63.18156</td>
+      <td>7.91497</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map4_15057024" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map4_15057024, 63.18156, 7.91497, null)</script></td>
+    </tr>
+    <tr>
+      <td>12_04023928</td>
+      <td>60.20899</td>
+      <td>12.053821</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map12_04023928" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map12_04023928, 60.20899, 12.053821, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480106</td>
+      <td>67.89349</td>
+      <td>15.150284</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18480106" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480106, 67.89349, 15.150284, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480092</td>
+      <td>67.67473</td>
+      <td>14.966025</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18480092" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480092, 67.67473, 14.966025, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480090</td>
+      <td>67.68972</td>
+      <td>15.048457</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18480090" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480090, 67.68972, 15.048457, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480089</td>
+      <td>67.69906</td>
+      <td>15.072214</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18480089" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480089, 67.69906, 15.072214, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480088</td>
+      <td>67.71149</td>
+      <td>15.117451</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18480088" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480088, 67.71149, 15.117451, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480087</td>
+      <td>67.72084</td>
+      <td>15.146378</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18480087" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480087, 67.72084, 15.146378, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480082</td>
+      <td>67.79333</td>
+      <td>15.313242</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18480082" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480082, 67.79333, 15.313242, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480081</td>
+      <td>67.792114</td>
+      <td>15.297801</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18480081" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480081, 67.792114, 15.297801, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480084</td>
+      <td>67.73872</td>
+      <td>15.190686</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18480084" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480084, 67.73872, 15.190686, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480011</td>
+      <td>67.877266</td>
+      <td>15.061248</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18480011" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480011, 67.877266, 15.061248, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480010</td>
+      <td>67.896835</td>
+      <td>15.115019</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18480010" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480010, 67.896835, 15.115019, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480022</td>
+      <td>67.696</td>
+      <td>15.337662</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18480022" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480022, 67.696, 15.337662, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480021</td>
+      <td>67.933174</td>
+      <td>15.248559</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18480021" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480021, 67.933174, 15.248559, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480008</td>
+      <td>67.684265</td>
+      <td>15.026892</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18480008" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480008, 67.684265, 15.026892, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480064</td>
+      <td>67.69682</td>
+      <td>15.459196</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18480064" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480064, 67.69682, 15.459196, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480063</td>
+      <td>67.66452</td>
+      <td>14.773399</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18480063" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480063, 67.66452, 14.773399, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480066</td>
+      <td>67.70576</td>
+      <td>15.400335</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18480066" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480066, 67.70576, 15.400335, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480065</td>
+      <td>67.68906</td>
+      <td>15.655342</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18480065" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480065, 67.68906, 15.655342, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480060</td>
+      <td>67.72146</td>
+      <td>14.884854</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18480060" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480060, 67.72146, 14.884854, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480061</td>
+      <td>67.72044</td>
+      <td>15.272356</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18480061" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480061, 67.72044, 15.272356, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480038</td>
+      <td>67.901855</td>
+      <td>15.077245</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18480038" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480038, 67.901855, 15.077245, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480037</td>
+      <td>67.66547</td>
+      <td>14.936086</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18480037" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480037, 67.66547, 14.936086, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480036</td>
+      <td>67.70519</td>
+      <td>15.092158</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18480036" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480036, 67.70519, 15.092158, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480045</td>
+      <td>67.796104</td>
+      <td>15.297652</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18480045" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480045, 67.796104, 15.297652, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480040</td>
+      <td>67.80126</td>
+      <td>15.362527</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18480040" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480040, 67.80126, 15.362527, null)</script></td>
+    </tr>
+    <tr>
+      <td>13_20203719</td>
+      <td>70.09446</td>
+      <td>25.0359</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map13_20203719" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map13_20203719, 70.09446, 25.0359, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1429168401</td>
+      <td>61.271942</td>
+      <td>4.951236</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1429168401" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1429168401, 61.271942, 4.951236, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1420523301</td>
+      <td>61.20864</td>
+      <td>6.998822</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1420523301" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1420523301, 61.20864, 6.998822, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1420523302</td>
+      <td>61.208633</td>
+      <td>6.9986925</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1420523302" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1420523302, 61.208633, 6.9986925, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1420523202</td>
+      <td>61.207645</td>
+      <td>7.0017157</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1420523202" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1420523202, 61.207645, 7.0017157, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1420523201</td>
+      <td>61.207672</td>
+      <td>7.0017323</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1420523201" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1420523201, 61.207672, 7.0017323, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1420523501</td>
+      <td>61.210526</td>
+      <td>6.9968596</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1420523501" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1420523501, 61.210526, 6.9968596, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1420523502</td>
+      <td>61.210506</td>
+      <td>6.996786</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1420523502" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1420523502, 61.210506, 6.996786, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1420523402</td>
+      <td>61.211773</td>
+      <td>6.994211</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1420523402" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1420523402, 61.211773, 6.994211, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1420523401</td>
+      <td>61.2118</td>
+      <td>6.994228</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1420523401" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1420523401, 61.2118, 6.994228, null)</script></td>
+    </tr>
+    <tr>
+      <td>15_0517011801</td>
+      <td>61.82741</td>
+      <td>9.392212</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map15_0517011801" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map15_0517011801, 61.82741, 9.392212, null)</script></td>
+    </tr>
+    <tr>
+      <td>15_0517011802</td>
+      <td>61.8275</td>
+      <td>9.392288</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map15_0517011802" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map15_0517011802, 61.8275, 9.392288, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1420523701</td>
+      <td>61.215466</td>
+      <td>6.985987</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1420523701" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1420523701, 61.215466, 6.985987, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1420523702</td>
+      <td>61.21543</td>
+      <td>6.9859896</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1420523702" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1420523702, 61.21543, 6.9859896, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1420523801</td>
+      <td>61.215584</td>
+      <td>6.984732</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1420523801" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1420523801, 61.215584, 6.984732, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1420523602</td>
+      <td>61.21433</td>
+      <td>6.989803</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1420523602" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1420523602, 61.21433, 6.989803, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1420523601</td>
+      <td>61.21433</td>
+      <td>6.989896</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1420523601" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1420523601, 61.21433, 6.989896, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1420524301</td>
+      <td>61.217518</td>
+      <td>6.9694867</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1420524301" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1420524301, 61.217518, 6.9694867, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1420524002</td>
+      <td>61.21686</td>
+      <td>6.9771643</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1420524002" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1420524002, 61.21686, 6.9771643, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1420524001</td>
+      <td>61.21689</td>
+      <td>6.9771996</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1420524001" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1420524001, 61.21689, 6.9771996, null)</script></td>
+    </tr>
+    <tr>
+      <td>15_0517013201</td>
+      <td>61.829456</td>
+      <td>9.404541</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map15_0517013201" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map15_0517013201, 61.829456, 9.404541, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18330307</td>
+      <td>66.34938</td>
+      <td>14.012608</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18330307" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18330307, 66.34938, 14.012608, null)</script></td>
+    </tr>
+    <tr>
+      <td>15_0515024701</td>
+      <td>61.82622</td>
+      <td>9.39979</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map15_0515024701" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map15_0515024701, 61.82622, 9.39979, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18330374</td>
+      <td>66.32224</td>
+      <td>14.816237</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18330374" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18330374, 66.32224, 14.816237, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18330262</td>
+      <td>66.31986</td>
+      <td>13.475566</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18330262" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18330262, 66.31986, 13.475566, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18330290</td>
+      <td>66.25862</td>
+      <td>13.725937</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18330290" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18330290, 66.25862, 13.725937, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18330295</td>
+      <td>66.27482</td>
+      <td>13.77497</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18330295" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18330295, 66.27482, 13.77497, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18330296</td>
+      <td>66.263275</td>
+      <td>13.752657</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18330296" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18330296, 66.263275, 13.752657, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18330180</td>
+      <td>66.385574</td>
+      <td>13.992636</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18330180" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18330180, 66.385574, 13.992636, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18330184</td>
+      <td>66.32217</td>
+      <td>14.834148</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18330184" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18330184, 66.32217, 14.834148, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18330066</td>
+      <td>66.24145</td>
+      <td>14.078952</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18330066" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18330066, 66.24145, 14.078952, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18330065</td>
+      <td>66.24083</td>
+      <td>14.058588</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18330065" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18330065, 66.24083, 14.058588, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18330067</td>
+      <td>66.24416</td>
+      <td>14.073831</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18330067" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18330067, 66.24416, 14.073831, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18330069</td>
+      <td>66.24332</td>
+      <td>14.050215</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18330069" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18330069, 66.24332, 14.050215, null)</script></td>
+    </tr>
+    <tr>
+      <td>13_20144002</td>
+      <td>70.140816</td>
+      <td>21.85528</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map13_20144002" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map13_20144002, 70.140816, 21.85528, null)</script></td>
+    </tr>
+    <tr>
+      <td>13_20144003</td>
+      <td>70.25185</td>
+      <td>21.784962</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map13_20144003" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map13_20144003, 70.25185, 21.784962, null)</script></td>
+    </tr>
+    <tr>
+      <td>1_15202744</td>
+      <td>62.133244</td>
+      <td>6.3016567</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map1_15202744" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map1_15202744, 62.133244, 6.3016567, null)</script></td>
+    </tr>
+    <tr>
+      <td>13_20145003</td>
+      <td>70.25184</td>
+      <td>21.784506</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map13_20145003" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map13_20145003, 70.25184, 21.784506, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18500030</td>
+      <td>67.88957</td>
+      <td>16.215908</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18500030" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18500030, 67.88957, 16.215908, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18500032</td>
+      <td>68.010864</td>
+      <td>16.338348</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18500032" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18500032, 68.010864, 16.338348, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18500034</td>
+      <td>68.18823</td>
+      <td>16.102184</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18500034" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18500034, 68.18823, 16.102184, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18500036</td>
+      <td>68.12537</td>
+      <td>16.1033</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18500036" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18500036, 68.12537, 16.1033, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18500038</td>
+      <td>67.81565</td>
+      <td>16.51654</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18500038" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18500038, 67.81565, 16.51654, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18500037</td>
+      <td>67.85761</td>
+      <td>16.467634</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18500037" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18500037, 67.85761, 16.467634, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18500041</td>
+      <td>68.059975</td>
+      <td>16.321384</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18500041" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18500041, 68.059975, 16.321384, null)</script></td>
+    </tr>
+    <tr>
+      <td>5_08191025</td>
+      <td>59.27675</td>
+      <td>9.329178</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map5_08191025" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map5_08191025, 59.27675, 9.329178, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18160036</td>
+      <td>65.651306</td>
+      <td>12.641658</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18160036" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18160036, 65.651306, 12.641658, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18160024</td>
+      <td>65.63052</td>
+      <td>12.746716</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18160024" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18160024, 65.63052, 12.746716, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18160023</td>
+      <td>65.70214</td>
+      <td>12.589611</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18160023" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18160023, 65.70214, 12.589611, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18331291</td>
+      <td>66.27729</td>
+      <td>13.74776</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18331291" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18331291, 66.27729, 13.74776, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18331288</td>
+      <td>66.265884</td>
+      <td>13.726236</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18331288" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18331288, 66.265884, 13.726236, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18331190</td>
+      <td>66.23926</td>
+      <td>14.045524</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18331190" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18331190, 66.23926, 14.045524, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18331068</td>
+      <td>66.24311</td>
+      <td>14.061898</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18331068" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18331068, 66.24311, 14.061898, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18330417</td>
+      <td>66.332344</td>
+      <td>14.510074</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18330417" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18330417, 66.332344, 14.510074, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18330447</td>
+      <td>66.35177</td>
+      <td>14.013887</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18330447" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18330447, 66.35177, 14.013887, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19332514</td>
+      <td>69.156876</td>
+      <td>19.177153</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19332514" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19332514, 69.156876, 19.177153, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19332512</td>
+      <td>69.16001</td>
+      <td>19.181286</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19332512" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19332512, 69.16001, 19.181286, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19332517</td>
+      <td>69.15364</td>
+      <td>19.173656</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19332517" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19332517, 69.15364, 19.173656, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19332813</td>
+      <td>69.19494</td>
+      <td>19.119728</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19332813" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19332813, 69.19494, 19.119728, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19332818</td>
+      <td>69.188545</td>
+      <td>19.129963</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19332818" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19332818, 69.188545, 19.129963, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19332834</td>
+      <td>69.18302</td>
+      <td>19.090668</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19332834" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19332834, 69.18302, 19.090668, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19334913</td>
+      <td>69.383804</td>
+      <td>18.779596</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19334913" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19334913, 69.383804, 18.779596, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19334210</td>
+      <td>69.37808</td>
+      <td>19.0126</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19334210" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19334210, 69.37808, 19.0126, null)</script></td>
+    </tr>
+    <tr>
+      <td>4_16205883</td>
+      <td>64.17171</td>
+      <td>9.389928</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map4_16205883" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map4_16205883, 64.17171, 9.389928, null)</script></td>
+    </tr>
+    <tr>
+      <td>4_16205882</td>
+      <td>63.997864</td>
+      <td>9.175301</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map4_16205882" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map4_16205882, 63.997864, 9.175301, null)</script></td>
+    </tr>
+    <tr>
+      <td>4_16205885</td>
+      <td>63.869225</td>
+      <td>8.54921</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map4_16205885" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map4_16205885, 63.869225, 8.54921, null)</script></td>
+    </tr>
+    <tr>
+      <td>9_0235044601</td>
+      <td>60.069733</td>
+      <td>11.2141905</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map9_0235044601" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map9_0235044601, 60.069733, 11.2141905, null)</script></td>
+    </tr>
+    <tr>
+      <td>12_04419111</td>
+      <td>62.521366</td>
+      <td>11.216476</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map12_04419111" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map12_04419111, 62.521366, 11.216476, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18270060</td>
+      <td>66.15217</td>
+      <td>12.695536</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18270060" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18270060, 66.15217, 12.695536, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19338407</td>
+      <td>69.07879</td>
+      <td>19.21351</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19338407" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19338407, 69.07879, 19.21351, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19338714</td>
+      <td>69.07674</td>
+      <td>19.308332</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19338714" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19338714, 69.07674, 19.308332, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1430270002</td>
+      <td>61.32725</td>
+      <td>5.9023137</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1430270002" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1430270002, 61.32725, 5.9023137, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1430270001</td>
+      <td>61.327435</td>
+      <td>5.9020896</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1430270001" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1430270001, 61.327435, 5.9020896, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18380080</td>
+      <td>67.07441</td>
+      <td>13.855503</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18380080" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18380080, 67.07441, 13.855503, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18380081</td>
+      <td>67.054924</td>
+      <td>13.953622</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18380081" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18380081, 67.054924, 13.953622, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1412825001</td>
+      <td>61.194622</td>
+      <td>4.8077683</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1412825001" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1412825001, 61.194622, 4.8077683, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19381713</td>
+      <td>69.92734</td>
+      <td>20.163641</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19381713" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19381713, 69.92734, 20.163641, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19382515</td>
+      <td>69.461845</td>
+      <td>20.207968</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19382515" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19382515, 69.461845, 20.207968, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1429172301</td>
+      <td>61.272457</td>
+      <td>5.645679</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1429172301" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1429172301, 61.272457, 5.645679, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1429172302</td>
+      <td>61.272457</td>
+      <td>5.6456976</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1429172302" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1429172302, 61.272457, 5.6456976, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1412825301</td>
+      <td>61.17676</td>
+      <td>4.6952214</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1412825301" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1412825301, 61.17676, 4.6952214, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1412825601</td>
+      <td>61.177574</td>
+      <td>4.8678675</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1412825601" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1412825601, 61.177574, 4.8678675, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1412827101</td>
+      <td>61.107372</td>
+      <td>4.72697</td>
+      <td>FredrikLindseth</td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1412827101" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1412827101, 61.107372, 4.72697, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18660074</td>
+      <td>68.38265</td>
+      <td>14.589575</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18660074" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18660074, 68.38265, 14.589575, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18660105</td>
+      <td>68.48313</td>
+      <td>15.256233</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18660105" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18660105, 68.48313, 15.256233, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18660124</td>
+      <td>68.47233</td>
+      <td>15.302459</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18660124" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18660124, 68.47233, 15.302459, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1412828301</td>
+      <td>61.007484</td>
+      <td>4.609736</td>
+      <td>FredrikLindseth</td>
+      <td></td>
+      <td>Nå finnes holdeplassen, men ikke fergeruten som går mellom stoppene.</td>
+      <td><div id="map14_1412828301" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1412828301, 61.007484, 4.609736, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1412828901</td>
+      <td>60.991016</td>
+      <td>4.5906487</td>
+      <td>FredrikLindseth</td>
+      <td></td>
+      <td>Nå finnes holdeplassen, men ikke fergeruten som går mellom stoppene.</td>
+      <td><div id="map14_1412828901" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1412828901, 60.991016, 4.5906487, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1412828601</td>
+      <td>60.994167</td>
+      <td>4.6088924</td>
+      <td>FredrikLindseth</td>
+      <td></td>
+      <td>Nå finnes holdeplassen, men ikke fergeruten som går mellom stoppene.</td>
+      <td><div id="map14_1412828601" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1412828601, 60.994167, 4.6088924, null)</script></td>
+    </tr>
+    <tr>
+      <td>12_04204085</td>
+      <td>60.122833</td>
+      <td>12.220297</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map12_04204085" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map12_04204085, 60.122833, 12.220297, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1412827701</td>
+      <td>61.091053</td>
+      <td>4.7420993</td>
+      <td>FredrikLindseth</td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1412827701" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1412827701, 61.091053, 4.7420993, null)</script></td>
+    </tr>
+    <tr>
+      <td>12_04297789</td>
+      <td>61.08855</td>
+      <td>11.396432</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map12_04297789" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map12_04297789, 61.08855, 11.396432, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19018000</td>
+      <td>68.87515</td>
+      <td>16.694921</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19018000" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19018000, 68.87515, 16.694921, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1412829201</td>
+      <td>61.02626</td>
+      <td>4.780339</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1412829201" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1412829201, 61.02626, 4.780339, null)</script></td>
+    </tr>
+    <tr>
+      <td>12_04204254</td>
+      <td>59.9633</td>
+      <td>12.118152</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map12_04204254" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map12_04204254, 59.9633, 12.118152, null)</script></td>
+    </tr>
+    <tr>
+      <td>12_04204286</td>
+      <td>60.03444</td>
+      <td>12.092962</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map12_04204286" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map12_04204286, 60.03444, 12.092962, null)</script></td>
+    </tr>
+    <tr>
+      <td>12_04204276</td>
+      <td>60.029316</td>
+      <td>12.042724</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map12_04204276" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map12_04204276, 60.029316, 12.042724, null)</script></td>
+    </tr>
+    <tr>
+      <td>12_04204275</td>
+      <td>60.035557</td>
+      <td>12.037479</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map12_04204275" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map12_04204275, 60.035557, 12.037479, null)</script></td>
+    </tr>
+    <tr>
+      <td>12_04204274</td>
+      <td>60.041763</td>
+      <td>12.038733</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map12_04204274" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map12_04204274, 60.041763, 12.038733, null)</script></td>
+    </tr>
+    <tr>
+      <td>12_04204273</td>
+      <td>60.050785</td>
+      <td>12.036077</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map12_04204273" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map12_04204273, 60.050785, 12.036077, null)</script></td>
+    </tr>
+    <tr>
+      <td>12_04297202</td>
+      <td>61.411373</td>
+      <td>11.743625</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map12_04297202" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map12_04297202, 61.411373, 11.743625, null)</script></td>
+    </tr>
+    <tr>
+      <td>12_04297208</td>
+      <td>61.428276</td>
+      <td>11.709215</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map12_04297208" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map12_04297208, 61.428276, 11.709215, null)</script></td>
+    </tr>
+    <tr>
+      <td>12_04297205</td>
+      <td>61.425373</td>
+      <td>11.71067</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map12_04297205" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map12_04297205, 61.425373, 11.71067, null)</script></td>
+    </tr>
+    <tr>
+      <td>12_04297211</td>
+      <td>61.448112</td>
+      <td>11.690597</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map12_04297211" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map12_04297211, 61.448112, 11.690597, null)</script></td>
+    </tr>
+    <tr>
+      <td>10_12635918</td>
+      <td>60.696265</td>
+      <td>5.202857</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map10_12635918" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map10_12635918, 60.696265, 5.202857, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18490105</td>
+      <td>67.99715</td>
+      <td>15.548535</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18490105" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18490105, 67.99715, 15.548535, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18490104</td>
+      <td>67.99245</td>
+      <td>15.610799</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18490104" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18490104, 67.99245, 15.610799, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18490103</td>
+      <td>67.99479</td>
+      <td>15.676405</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18490103" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18490103, 67.99479, 15.676405, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18490056</td>
+      <td>68.11993</td>
+      <td>15.684012</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18490056" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18490056, 68.11993, 15.684012, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18490036</td>
+      <td>67.99063</td>
+      <td>15.633065</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18490036" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18490036, 67.99063, 15.633065, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18490035</td>
+      <td>68.0022</td>
+      <td>15.687286</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18490035" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18490035, 68.0022, 15.687286, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18490037</td>
+      <td>67.99528</td>
+      <td>15.568712</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18490037" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18490037, 67.99528, 15.568712, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18490081</td>
+      <td>68.00187</td>
+      <td>15.497103</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18490081" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18490081, 68.00187, 15.497103, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18400092</td>
+      <td>67.11488</td>
+      <td>15.36374</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18400092" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18400092, 67.11488, 15.36374, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18400093</td>
+      <td>67.10993</td>
+      <td>15.351289</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18400093" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18400093, 67.10993, 15.351289, null)</script></td>
+    </tr>
+    <tr>
+      <td>13_20044200</td>
+      <td>70.73288</td>
+      <td>23.358297</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map13_20044200" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map13_20044200, 70.73288, 23.358297, null)</script></td>
+    </tr>
+    <tr>
+      <td>13_20044003</td>
+      <td>70.57635</td>
+      <td>23.489296</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map13_20044003" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map13_20044003, 70.57635, 23.489296, null)</script></td>
+    </tr>
+    <tr>
+      <td>13_20044004</td>
+      <td>70.54645</td>
+      <td>23.158207</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map13_20044004" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map13_20044004, 70.54645, 23.158207, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1439759201</td>
+      <td>62.01306</td>
+      <td>5.198907</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1439759201" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1439759201, 62.01306, 5.198907, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1401831001</td>
+      <td>61.6289</td>
+      <td>4.9554505</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1401831001" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1401831001, 61.6289, 4.9554505, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1401831301</td>
+      <td>61.63271</td>
+      <td>4.8369517</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1401831301" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1401831301, 61.63271, 4.8369517, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19234164</td>
+      <td>68.82533</td>
+      <td>17.532997</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19234164" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19234164, 68.82533, 17.532997, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19234156</td>
+      <td>68.82682</td>
+      <td>17.51174</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19234156" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19234156, 68.82682, 17.51174, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18510035</td>
+      <td>68.37187</td>
+      <td>15.241727</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18510035" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18510035, 68.37187, 15.241727, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1401833701</td>
+      <td>61.578705</td>
+      <td>5.1491203</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1401833701" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1401833701, 61.578705, 5.1491203, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1428115001</td>
+      <td>61.455376</td>
+      <td>5.168818</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1428115001" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1428115001, 61.455376, 5.168818, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1428115002</td>
+      <td>61.455364</td>
+      <td>5.1688004</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1428115002" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1428115002, 61.455364, 5.1688004, null)</script></td>
+    </tr>
+    <tr>
+      <td>15_0502095901</td>
+      <td>60.86697</td>
+      <td>10.620275</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map15_0502095901" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map15_0502095901, 60.86697, 10.620275, null)</script></td>
+    </tr>
+    <tr>
+      <td>7_10263041</td>
+      <td>58.56675</td>
+      <td>7.477615</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map7_10263041" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map7_10263041, 58.56675, 7.477615, null)</script></td>
+    </tr>
+    <tr>
+      <td>7_10263043</td>
+      <td>58.577522</td>
+      <td>7.539525</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map7_10263043" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map7_10263043, 58.577522, 7.539525, null)</script></td>
+    </tr>
+    <tr>
+      <td>7_10263049</td>
+      <td>58.528202</td>
+      <td>7.453868</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map7_10263049" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map7_10263049, 58.528202, 7.453868, null)</script></td>
+    </tr>
+    <tr>
+      <td>7_10263040</td>
+      <td>58.56315</td>
+      <td>7.4663563</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map7_10263040" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map7_10263040, 58.56315, 7.4663563, null)</script></td>
+    </tr>
+    <tr>
+      <td>7_10263039</td>
+      <td>58.55623</td>
+      <td>7.460127</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map7_10263039" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map7_10263039, 58.55623, 7.460127, null)</script></td>
+    </tr>
+    <tr>
+      <td>7_10263016</td>
+      <td>58.747486</td>
+      <td>7.4795556</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map7_10263016" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map7_10263016, 58.747486, 7.4795556, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18340030</td>
+      <td>66.48884</td>
+      <td>12.966126</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18340030" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18340030, 66.48884, 12.966126, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18340021</td>
+      <td>66.51971</td>
+      <td>12.832109</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18340021" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18340021, 66.51971, 12.832109, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18340025</td>
+      <td>66.43553</td>
+      <td>13.051545</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18340025" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18340025, 66.43553, 13.051545, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18340013</td>
+      <td>66.57154</td>
+      <td>12.630656</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18340013" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18340013, 66.57154, 12.630656, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18340049</td>
+      <td>66.487305</td>
+      <td>12.966293</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18340049" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18340049, 66.487305, 12.966293, null)</script></td>
+    </tr>
+    <tr>
+      <td>16_11024705</td>
+      <td>58.917393</td>
+      <td>5.9899178</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map16_11024705" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map16_11024705, 58.917393, 5.9899178, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18450111</td>
+      <td>67.57757</td>
+      <td>15.768772</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18450111" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18450111, 67.57757, 15.768772, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18450048</td>
+      <td>67.58575</td>
+      <td>15.820537</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18450048" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18450048, 67.58575, 15.820537, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18450043</td>
+      <td>67.6107</td>
+      <td>15.422209</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18450043" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18450043, 67.6107, 15.422209, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18450040</td>
+      <td>67.47807</td>
+      <td>15.531575</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18450040" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18450040, 67.47807, 15.531575, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18450037</td>
+      <td>67.53975</td>
+      <td>15.464848</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18450037" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18450037, 67.53975, 15.464848, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18450060</td>
+      <td>67.57357</td>
+      <td>15.733768</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18450060" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18450060, 67.57357, 15.733768, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18450065</td>
+      <td>67.52377</td>
+      <td>15.494361</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18450065" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18450065, 67.52377, 15.494361, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18450068</td>
+      <td>67.58583</td>
+      <td>15.831277</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18450068" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18450068, 67.58583, 15.831277, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18450069</td>
+      <td>67.587135</td>
+      <td>15.845913</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18450069" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18450069, 67.587135, 15.845913, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18450066</td>
+      <td>67.52077</td>
+      <td>15.500421</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18450066" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18450066, 67.52077, 15.500421, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18450067</td>
+      <td>67.58454</td>
+      <td>15.733471</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18450067" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18450067, 67.58454, 15.733471, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18450059</td>
+      <td>67.58182</td>
+      <td>15.742281</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18450059" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18450059, 67.58182, 15.742281, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18450052</td>
+      <td>67.592705</td>
+      <td>15.222406</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18450052" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18450052, 67.592705, 15.222406, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18450071</td>
+      <td>67.638855</td>
+      <td>15.982112</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18450071" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18450071, 67.638855, 15.982112, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18450072</td>
+      <td>67.636284</td>
+      <td>15.965701</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18450072" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18450072, 67.636284, 15.965701, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18450024</td>
+      <td>67.53377</td>
+      <td>15.467948</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18450024" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18450024, 67.53377, 15.467948, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18450025</td>
+      <td>67.60346</td>
+      <td>15.727653</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18450025" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18450025, 67.60346, 15.727653, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18450023</td>
+      <td>67.532745</td>
+      <td>15.45508</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18450023" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18450023, 67.532745, 15.45508, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1438800801</td>
+      <td>61.823536</td>
+      <td>5.288898</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1438800801" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1438800801, 61.823536, 5.288898, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18451025</td>
+      <td>67.603584</td>
+      <td>15.727949</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18451025" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18451025, 67.603584, 15.727949, null)</script></td>
+    </tr>
+    <tr>
+      <td>3_17023737</td>
+      <td>64.079865</td>
+      <td>11.73345</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map3_17023737" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map3_17023737, 64.079865, 11.73345, null)</script></td>
+    </tr>
+    <tr>
+      <td>5_08056005</td>
+      <td>59.029945</td>
+      <td>9.764996</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map5_08056005" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map5_08056005, 59.029945, 9.764996, null)</script></td>
+    </tr>
+    <tr>
+      <td>5_08055000</td>
+      <td>59.03176</td>
+      <td>9.74824</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map5_08055000" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map5_08055000, 59.03176, 9.74824, null)</script></td>
+    </tr>
+    <tr>
+      <td>16_11414725</td>
+      <td>59.15938</td>
+      <td>5.970298</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map16_11414725" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map16_11414725, 59.15938, 5.970298, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19024394</td>
+      <td>70.032814</td>
+      <td>18.56541</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19024394" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19024394, 70.032814, 18.56541, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19024393</td>
+      <td>69.9726</td>
+      <td>18.526094</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19024393" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19024393, 69.9726, 18.526094, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19024391</td>
+      <td>69.83983</td>
+      <td>18.66728</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19024391" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19024391, 69.83983, 18.66728, null)</script></td>
+    </tr>
+    <tr>
+      <td>10_12197822</td>
+      <td>59.761699</td>
+      <td>5.179562</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map10_12197822" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map10_12197822, 59.761699, 5.179562, null)</script></td>
+    </tr>
+    <tr>
+      <td>10_12197818</td>
+      <td>59.765217</td>
+      <td>5.166168</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map10_12197818" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map10_12197818, 59.765217, 5.166168, null)</script></td>
+    </tr>
+    <tr>
+      <td>9_0215013001</td>
+      <td>59.736736</td>
+      <td>10.568428</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map9_0215013001" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map9_0215013001, 59.736736, 10.568428, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1438140201</td>
+      <td>61.814213</td>
+      <td>5.226795</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map14_1438140201" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1438140201, 61.814213, 5.226795, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19133615</td>
+      <td>68.5371</td>
+      <td>16.73897</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19133615" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19133615, 68.5371, 16.73897, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19133807</td>
+      <td>68.54901</td>
+      <td>16.722683</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19133807" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19133807, 68.54901, 16.722683, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19134622</td>
+      <td>68.556274</td>
+      <td>16.73133</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19134622" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19134622, 68.556274, 16.73133, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19134417</td>
+      <td>68.60842</td>
+      <td>16.692982</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19134417" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19134417, 68.60842, 16.692982, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18240080</td>
+      <td>65.8023</td>
+      <td>12.725039</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18240080" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18240080, 65.8023, 12.725039, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19415100</td>
+      <td>69.85542</td>
+      <td>20.696476</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19415100" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19415100, 69.85542, 20.696476, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19243827</td>
+      <td>69.02296</td>
+      <td>18.78529</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19243827" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19243827, 69.02296, 18.78529, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19244536</td>
+      <td>69.167046</td>
+      <td>18.384996</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19244536" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19244536, 69.167046, 18.384996, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19244532</td>
+      <td>69.17147</td>
+      <td>18.39883</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19244532" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19244532, 69.17147, 18.39883, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19244526</td>
+      <td>69.174675</td>
+      <td>18.413084</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19244526" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19244526, 69.174675, 18.413084, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19244521</td>
+      <td>69.17793</td>
+      <td>18.43298</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19244521" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19244521, 69.17793, 18.43298, null)</script></td>
+    </tr>
+    <tr>
+      <td>2_19246093</td>
+      <td>69.28003</td>
+      <td>18.672802</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map2_19246093" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map2_19246093, 69.28003, 18.672802, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18180010</td>
+      <td>65.89256</td>
+      <td>11.990395</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18180010" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18180010, 65.89256, 11.990395, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18180006</td>
+      <td>65.89664</td>
+      <td>11.998877</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18180006" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18180006, 65.89664, 11.998877, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18180007</td>
+      <td>65.90766</td>
+      <td>12.04617</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18180007" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18180007, 65.90766, 12.04617, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18350001</td>
+      <td>66.54296</td>
+      <td>12.162661</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map6_18350001" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18350001, 66.54296, 12.162661, null)</script></td>
+    </tr>
+    <tr>
+      <td>16_11294711</td>
+      <td>59.009563</td>
+      <td>6.3976226</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map16_11294711" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map16_11294711, 59.009563, 6.3976226, null)</script></td>
+    </tr>
+    <tr>
+      <td>3_17186893</td>
+      <td>63.65702</td>
+      <td>10.323338</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map3_17186893" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map3_17186893, 63.65702, 10.323338, null)</script></td>
+    </tr>
+    <tr>
+      <td>16_11296534</td>
+      <td>59.04084</td>
+      <td>6.513969</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div id="map16_11296534" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map16_11296534, 59.04084, 6.513969, null)</script></td>
+    </tr>
+  </table>
+
+  
+  
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">This page is maintained by <a href="https://github.com/obtitus">obtitus</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>	
+        <p class="copyright">Map data &copy;<a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>	
+	</p>
+	<p class="copyright">NBR data &copy;<a href="http://www.nasjonalreiseplanlegger.com">Nasjonal Reiseplanlegger</a>
+	</p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-2401814-5");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+    
+
+  </body>
+</html>

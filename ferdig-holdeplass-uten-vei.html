@@ -1,0 +1,340 @@
+﻿<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Barnehagefakta til openstreetmap : Data for import/fletting av barnehageinformasjon til openstreetmap">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <!-- <link href="https://api.mapbox.com/mapbox.js/v2.2.2/mapbox.css" rel="stylesheet" /> -->    
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/leaflet.css"/>
+
+    <title></title>
+  </head>
+
+  <body>
+
+    <!-- <script src='https://api.mapbox.com/mapbox.js/v2.2.2/mapbox.js'></script> -->
+    <script src="javascripts/mapbox.js"></script>
+    <!-- For ajax call -->
+    <!-- <script src='https://code.jquery.com/jquery-1.11.0.min.js'></script> -->
+    <script src="javascripts/jquery-1.11.0.min.js"></script>
+    <!-- <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-osm/v0.1.0/leaflet-osm.js'></script> -->    
+    <!-- <script src="javascripts/leaflet-osm.js"></script> -->
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+
+    <script>
+    function create_map(name, lat, lon, osm_url) {
+	var map = L.map(name)
+	map.setView([lat, lon], 15);
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+	    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+	}).addTo(map);
+	// Highlight osm object
+	// Fixme use the overpass xml:
+	// if ((typeof osm_xml !== 'undefined') && (osm_xml !== null)) {
+	//     var layer = new L.OSM.DataLayer(osm_xml).addTo(map);
+	// }
+	
+	if ((typeof osm_url !== 'undefined') && (osm_url !== null)) {
+	    $.ajax({
+		url: osm_url, // on the form: "https://www.openstreetmap.org/api/0.6/[node/way/relation]/<id>[/full]"
+		dataType: "xml",
+		success: function (xml) {
+		    var layer = new L.OSM.DataLayer(xml).addTo(map);
+		    map.fitBounds(layer.getBounds(), {maxZoom:15});
+		}
+	    });
+	}
+    }
+    </script>
+    
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/obtitus/holdeplasser-uten-vei-to-osm">View on GitHub</a>
+
+	  <h1 id="project_title">Holdeplasser uten vei</h1>
+          <h2 id="project_tagline">For kartdugnad for Nasjonal Reiseplanlegger</h2>
+
+	  <a href="index.html" title="Tilbake til oversikt">
+            <section id="back">
+              Tilbake til oversikt
+            </section>
+	  </a>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+	  
+	</h1>
+	
+	<p>Sist oppdatert 2016-05-27 23:40</p>
+	
+	<h3>
+	  Åpne i JOSM (Java OpenStreetmap Editor)
+	</h3>
+	csv filen <a href=./ferdig-holdeplass-uten-vei.csv>./ferdig-holdeplass-uten-vei.csv</a> inneholder all informasjonen i tabellen under, denne kan åpnes i JOSM
+
+	<h3>
+	  Tabell 
+	</h3>
+  <table> <!--  class="layout display responsive-table" -->
+    <thead>
+      <tr>
+      <th>HoldeplassID</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>Jobbes med av</th>
+      <th>Status</th>
+      <th>Kommentar</th>
+      <th>Kart</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>10_12518206</td>
+      <td>60.692874</td>
+      <td>5.782257</td>
+      <td>FredrikLindseth</td>
+      <td>Ferdig</td>
+      <td></td>
+      <td><div id="map10_12518206" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map10_12518206, 60.692874, 5.782257, null)</script></td>
+    </tr>
+    <tr>
+      <td>10_12518204</td>
+      <td>60.691232</td>
+      <td>5.784702</td>
+      <td>FredrikLindseth</td>
+      <td>Ferdig</td>
+      <td></td>
+      <td><div id="map10_12518204" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map10_12518204, 60.691232, 5.784702, null)</script></td>
+    </tr>
+    <tr>
+      <td>10_12518203</td>
+      <td>60.691059</td>
+      <td>5.784692</td>
+      <td>FredrikLindseth</td>
+      <td>Ferdig</td>
+      <td></td>
+      <td><div id="map10_12518203" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map10_12518203, 60.691059, 5.784692, null)</script></td>
+    </tr>
+    <tr>
+      <td>10_12518202</td>
+      <td>60.678187</td>
+      <td>5.795306</td>
+      <td>FredrikLindseth</td>
+      <td>Ferdig</td>
+      <td></td>
+      <td><div id="map10_12518202" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map10_12518202, 60.678187, 5.795306, null)</script></td>
+    </tr>
+    <tr>
+      <td>12_04286624</td>
+      <td>61.28005</td>
+      <td>12.48475</td>
+      <td>obtitus</td>
+      <td>Ferdig</td>
+      <td></td>
+      <td><div id="map12_04286624" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map12_04286624, 61.28005, 12.48475, null)</script></td>
+    </tr>
+    <tr>
+      <td>12_04286626</td>
+      <td>61.29322</td>
+      <td>12.475844</td>
+      <td>obtitus</td>
+      <td>Ferdig</td>
+      <td></td>
+      <td><div id="map12_04286626" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map12_04286626, 61.29322, 12.475844, null)</script></td>
+    </tr>
+    <tr>
+      <td>12_04286630</td>
+      <td>61.240067</td>
+      <td>12.514129</td>
+      <td>obtitus</td>
+      <td>Ferdig</td>
+      <td></td>
+      <td><div id="map12_04286630" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map12_04286630, 61.240067, 12.514129, null)</script></td>
+    </tr>
+    <tr>
+      <td>12_04286633</td>
+      <td>61.24563</td>
+      <td>12.506059</td>
+      <td>obtitus</td>
+      <td>Ferdig</td>
+      <td></td>
+      <td><div id="map12_04286633" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map12_04286633, 61.24563, 12.506059, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1417479001</td>
+      <td>61.038296</td>
+      <td>6.2682943</td>
+      <td>FredrikLindseth</td>
+      <td>Ferdig</td>
+      <td>Ett fergeleie</td>
+      <td><div id="map14_1417479001" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1417479001, 61.038296, 6.2682943, null)</script></td>
+    </tr>
+    <tr>
+      <td>10_12410650</td>
+      <td>60.260031</td>
+      <td>5.861177</td>
+      <td>FredrikLindseth</td>
+      <td>Ferdig</td>
+      <td></td>
+      <td><div id="map10_12410650" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map10_12410650, 60.260031, 5.861177, null)</script></td>
+    </tr>
+    <tr>
+      <td>10_12410651</td>
+      <td>60.248768</td>
+      <td>5.8654</td>
+      <td>FredrikLindseth</td>
+      <td>Ferdig</td>
+      <td></td>
+      <td><div id="map10_12410651" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map10_12410651, 60.248768, 5.8654, null)</script></td>
+    </tr>
+    <tr>
+      <td>10_12410654</td>
+      <td>60.258549</td>
+      <td>5.861589</td>
+      <td>FredrikLindseth</td>
+      <td>Ferdig</td>
+      <td></td>
+      <td><div id="map10_12410654" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map10_12410654, 60.258549, 5.861589, null)</script></td>
+    </tr>
+    <tr>
+      <td>10_12410652</td>
+      <td>60.248803</td>
+      <td>5.865505</td>
+      <td>FredrikLindseth</td>
+      <td>Ferdig</td>
+      <td></td>
+      <td><div id="map10_12410652" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map10_12410652, 60.248803, 5.865505, null)</script></td>
+    </tr>
+    <tr>
+      <td>10_12410653</td>
+      <td>60.258583</td>
+      <td>5.861461</td>
+      <td>FredrikLindseth</td>
+      <td>Ferdig</td>
+      <td></td>
+      <td><div id="map10_12410653" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map10_12410653, 60.258583, 5.861461, null)</script></td>
+    </tr>
+    <tr>
+      <td>10_12410640</td>
+      <td>60.256281</td>
+      <td>5.831372</td>
+      <td>FredrikLindseth</td>
+      <td>Ferdig</td>
+      <td></td>
+      <td><div id="map10_12410640" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map10_12410640, 60.256281, 5.831372, null)</script></td>
+    </tr>
+    <tr>
+      <td>10_12411532</td>
+      <td>60.251082</td>
+      <td>5.881061</td>
+      <td>FredrikLindseth</td>
+      <td>Ferdig</td>
+      <td></td>
+      <td><div id="map10_12411532" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map10_12411532, 60.251082, 5.881061, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1412826501</td>
+      <td>61.13835</td>
+      <td>4.7921453</td>
+      <td>FredrikLindseth</td>
+      <td>Ferdig</td>
+      <td></td>
+      <td><div id="map14_1412826501" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1412826501, 61.13835, 4.7921453, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1412826801</td>
+      <td>61.123558</td>
+      <td>4.732774</td>
+      <td>FredrikLindseth</td>
+      <td>Ferdig</td>
+      <td></td>
+      <td><div id="map14_1412826801" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1412826801, 61.123558, 4.732774, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1417766201</td>
+      <td>61.084156</td>
+      <td>6.3150167</td>
+      <td>FredrikLindseth</td>
+      <td>Ferdig</td>
+      <td>Ett fergeleie</td>
+      <td><div id="map14_1417766201" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1417766201, 61.084156, 6.3150167, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1417767801</td>
+      <td>61.069855</td>
+      <td>6.376114</td>
+      <td>FredrikLindseth</td>
+      <td>Ferdig</td>
+      <td>Ett fergeleie</td>
+      <td><div id="map14_1417767801" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1417767801, 61.069855, 6.376114, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1417768401</td>
+      <td>61.05014</td>
+      <td>6.4060006</td>
+      <td>FredrikLindseth</td>
+      <td>Ferdig</td>
+      <td>Ett fergeleie</td>
+      <td><div id="map14_1417768401" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1417768401, 61.05014, 6.4060006, null)</script></td>
+    </tr>
+    <tr>
+      <td>10_12531830</td>
+      <td>60.498721</td>
+      <td>5.509222</td>
+      <td>FredrikLindseth</td>
+      <td>Ferdig</td>
+      <td>Jeg la inn busstoppet, men det var rett ved en eksisterende vei.</td>
+      <td><div id="map10_12531830" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map10_12531830, 60.498721, 5.509222, null)</script></td>
+    </tr>
+    <tr>
+      <td>10_12532636</td>
+      <td>60.491315</td>
+      <td>5.521973</td>
+      <td>FredrikLindseth</td>
+      <td>Ferdig</td>
+      <td>Jeg la inn busstoppet, men det var rett ved en eksisterende vei.</td>
+      <td><div id="map10_12532636" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map10_12532636, 60.491315, 5.521973, null)</script></td>
+    </tr>
+  </table>
+
+  
+  
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">This page is maintained by <a href="https://github.com/obtitus">obtitus</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>	
+        <p class="copyright">Map data &copy;<a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>	
+	</p>
+	<p class="copyright">NBR data &copy;<a href="http://www.nasjonalreiseplanlegger.com">Nasjonal Reiseplanlegger</a>
+	</p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-2401814-5");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+    
+
+  </body>
+</html>
