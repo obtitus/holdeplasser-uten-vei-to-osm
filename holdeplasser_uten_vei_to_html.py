@@ -50,7 +50,9 @@ def generate_tables():
     tables = defaultdict(list) # rows, by status
     spreadsheet = get_spreadsheet()
     reader = csv.reader(spreadsheet, delimiter=',', quotechar='"')
-
+    first_line = reader.next()
+    info = first_line[0].decode('utf8')
+    
     for count, line in enumerate(reader):
         # if line[1] == 'Lat/Lon':
         #     print 'header', line
@@ -69,7 +71,7 @@ def generate_tables():
         tables[status].append(row)
 
     #print tables.keys()
-    return tables
+    return tables, info
 
 def render_and_write(filename, template, **kwargs):
     page = template.render(**kwargs)
@@ -83,7 +85,7 @@ def write_csv(filename, table, header):
             f.write('\n')
 
 def main(template_dir='.', output_dir='.'):
-    tables = generate_tables()
+    tables, info_index = generate_tables()
     index_template_filename = join(template_dir, 'index_template.html')
     index_template = Template(read_utf8_file(index_template_filename))
     template_filename = join(template_dir, 'template.html')
@@ -123,7 +125,7 @@ def main(template_dir='.', output_dir='.'):
     # index
     output_filename = join(output_dir, 'index.html')
     header = ['Status', 'Antall']
-    render_and_write(output_filename, index_template, table=index_info, header=header)
+    render_and_write(output_filename, index_template, table=index_info, header=header, info=info_index)
     
 if __name__ == '__main__':
     main()
