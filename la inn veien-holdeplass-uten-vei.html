@@ -1,0 +1,303 @@
+﻿<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Barnehagefakta til openstreetmap : Data for import/fletting av barnehageinformasjon til openstreetmap">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <!-- <link href="https://api.mapbox.com/mapbox.js/v2.2.2/mapbox.css" rel="stylesheet" /> -->    
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/leaflet.css"/>
+
+    <title></title>
+  </head>
+
+  <body>
+
+    <!-- <script src='https://api.mapbox.com/mapbox.js/v2.2.2/mapbox.js'></script> -->
+    <script src="javascripts/mapbox.js"></script>
+    <!-- For ajax call -->
+    <!-- <script src='https://code.jquery.com/jquery-1.11.0.min.js'></script> -->
+    <script src="javascripts/jquery-1.11.0.min.js"></script>
+    <!-- <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-osm/v0.1.0/leaflet-osm.js'></script> -->    
+    <!-- <script src="javascripts/leaflet-osm.js"></script> -->
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+
+    <script>
+    function create_map(name, lat, lon, osm_url) {
+	var map = L.map(name)
+	map.setView([lat, lon], 15);
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+	    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+	}).addTo(map);
+	// Highlight osm object
+	// Fixme use the overpass xml:
+	// if ((typeof osm_xml !== 'undefined') && (osm_xml !== null)) {
+	//     var layer = new L.OSM.DataLayer(osm_xml).addTo(map);
+	// }
+	
+	if ((typeof osm_url !== 'undefined') && (osm_url !== null)) {
+	    $.ajax({
+		url: osm_url, // on the form: "https://www.openstreetmap.org/api/0.6/[node/way/relation]/<id>[/full]"
+		dataType: "xml",
+		success: function (xml) {
+		    var layer = new L.OSM.DataLayer(xml).addTo(map);
+		    map.fitBounds(layer.getBounds(), {maxZoom:15});
+		}
+	    });
+	}
+    }
+    </script>
+    
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/obtitus/holdeplasser-uten-vei-to-osm">View on GitHub</a>
+
+	  <h1 id="project_title">Holdeplasser uten vei</h1>
+          <h2 id="project_tagline">For kartdugnad for Nasjonal Reiseplanlegger</h2>
+
+	  <a href="index.html" title="Tilbake til oversikt">
+            <section id="back">
+              Tilbake til oversikt
+            </section>
+	  </a>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+	  
+	</h1>
+	
+	<p>Sist oppdatert 2016-05-28 10:24</p>
+	
+	<h3>
+	  Åpne i JOSM (Java OpenStreetmap Editor)
+	</h3>
+	csv filen <a href=./la inn veien-holdeplass-uten-vei.csv>./la inn veien-holdeplass-uten-vei.csv</a> inneholder all informasjonen i tabellen under, denne kan åpnes i JOSM
+
+	<h3>
+	  Tabell 
+	</h3>
+  <table> <!--  class="layout display responsive-table" -->
+    <thead>
+      <tr>
+      <th>HoldeplassID</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>Jobbes med av</th>
+      <th>Status</th>
+      <th>Kommentar</th>
+      <th>Kart</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>6_18480106</td>
+      <td>67.89349</td>
+      <td>15.150284</td>
+      <td>obtitus</td>
+      <td>la inn veien</td>
+      <td></td>
+      <td><div id="map6_18480106" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480106, 67.89349, 15.150284, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480092</td>
+      <td>67.67473</td>
+      <td>14.966025</td>
+      <td>obtitus</td>
+      <td>la inn veien</td>
+      <td></td>
+      <td><div id="map6_18480092" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480092, 67.67473, 14.966025, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480090</td>
+      <td>67.68972</td>
+      <td>15.048457</td>
+      <td>obtitus</td>
+      <td>la inn veien</td>
+      <td></td>
+      <td><div id="map6_18480090" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480090, 67.68972, 15.048457, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480089</td>
+      <td>67.69906</td>
+      <td>15.072214</td>
+      <td>obtitus</td>
+      <td>la inn veien</td>
+      <td></td>
+      <td><div id="map6_18480089" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480089, 67.69906, 15.072214, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480088</td>
+      <td>67.71149</td>
+      <td>15.117451</td>
+      <td>obtitus</td>
+      <td>la inn veien</td>
+      <td></td>
+      <td><div id="map6_18480088" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480088, 67.71149, 15.117451, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480087</td>
+      <td>67.72084</td>
+      <td>15.146378</td>
+      <td>obtitus</td>
+      <td>la inn veien</td>
+      <td></td>
+      <td><div id="map6_18480087" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480087, 67.72084, 15.146378, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480082</td>
+      <td>67.79333</td>
+      <td>15.313242</td>
+      <td>obtitus</td>
+      <td>la inn veien</td>
+      <td></td>
+      <td><div id="map6_18480082" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480082, 67.79333, 15.313242, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480081</td>
+      <td>67.792114</td>
+      <td>15.297801</td>
+      <td>obtitus</td>
+      <td>la inn veien</td>
+      <td></td>
+      <td><div id="map6_18480081" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480081, 67.792114, 15.297801, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480084</td>
+      <td>67.73872</td>
+      <td>15.190686</td>
+      <td>obtitus</td>
+      <td>la inn veien</td>
+      <td></td>
+      <td><div id="map6_18480084" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480084, 67.73872, 15.190686, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480011</td>
+      <td>67.877266</td>
+      <td>15.061248</td>
+      <td>obtitus</td>
+      <td>la inn veien</td>
+      <td></td>
+      <td><div id="map6_18480011" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480011, 67.877266, 15.061248, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480010</td>
+      <td>67.896835</td>
+      <td>15.115019</td>
+      <td>obtitus</td>
+      <td>la inn veien</td>
+      <td></td>
+      <td><div id="map6_18480010" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480010, 67.896835, 15.115019, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480021</td>
+      <td>67.933174</td>
+      <td>15.248559</td>
+      <td>obtitus</td>
+      <td>la inn veien</td>
+      <td></td>
+      <td><div id="map6_18480021" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480021, 67.933174, 15.248559, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480008</td>
+      <td>67.684265</td>
+      <td>15.026892</td>
+      <td>obtitus</td>
+      <td>la inn veien</td>
+      <td></td>
+      <td><div id="map6_18480008" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480008, 67.684265, 15.026892, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480060</td>
+      <td>67.72146</td>
+      <td>14.884854</td>
+      <td>obtitus</td>
+      <td>la inn veien</td>
+      <td></td>
+      <td><div id="map6_18480060" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480060, 67.72146, 14.884854, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480038</td>
+      <td>67.901855</td>
+      <td>15.077245</td>
+      <td>obtitus</td>
+      <td>la inn veien</td>
+      <td></td>
+      <td><div id="map6_18480038" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480038, 67.901855, 15.077245, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480037</td>
+      <td>67.66547</td>
+      <td>14.936086</td>
+      <td>obtitus</td>
+      <td>la inn veien</td>
+      <td></td>
+      <td><div id="map6_18480037" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480037, 67.66547, 14.936086, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480036</td>
+      <td>67.70519</td>
+      <td>15.092158</td>
+      <td>obtitus</td>
+      <td>la inn veien</td>
+      <td></td>
+      <td><div id="map6_18480036" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480036, 67.70519, 15.092158, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480045</td>
+      <td>67.796104</td>
+      <td>15.297652</td>
+      <td>obtitus</td>
+      <td>la inn veien</td>
+      <td></td>
+      <td><div id="map6_18480045" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480045, 67.796104, 15.297652, null)</script></td>
+    </tr>
+    <tr>
+      <td>6_18480040</td>
+      <td>67.80126</td>
+      <td>15.362527</td>
+      <td>obtitus</td>
+      <td>la inn veien</td>
+      <td></td>
+      <td><div id="map6_18480040" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map6_18480040, 67.80126, 15.362527, null)</script></td>
+    </tr>
+  </table>
+
+  
+  
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">This page is maintained by <a href="https://github.com/obtitus">obtitus</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>	
+        <p class="copyright">Map data &copy;<a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>	
+	</p>
+	<p class="copyright">NBR data &copy;<a href="http://www.nasjonalreiseplanlegger.com">Nasjonal Reiseplanlegger</a>
+	</p>
+      </footer>
+    </div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-2401814-6', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+
+  </body>
+</html>
