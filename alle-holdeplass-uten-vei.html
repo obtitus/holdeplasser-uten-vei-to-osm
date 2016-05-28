@@ -27,7 +27,7 @@
     <script>
     function create_map(name, lat, lon, osm_url) {
 	var map = L.map(name)
-	map.setView([lat, lon], 15);
+	map.setView([lat, lon], 14);
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 	    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 	}).addTo(map);
@@ -43,7 +43,7 @@
 		dataType: "xml",
 		success: function (xml) {
 		    var layer = new L.OSM.DataLayer(xml).addTo(map);
-		    map.fitBounds(layer.getBounds(), {maxZoom:15});
+		    map.fitBounds(layer.getBounds(), {maxZoom:14});
 		}
 	    });
 	}
@@ -74,7 +74,7 @@
 	  Alle holdeplasser
 	</h1>
 	
-	<p>Sist oppdatert 2016-05-28 10:25</p>
+	<p>Sist oppdatert 2016-05-28 10:31</p>
 	
 	<h3>
 	  Åpne i JOSM (Java OpenStreetmap Editor)
@@ -1844,24 +1844,6 @@
       <td><div id="map14_1401833701" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1401833701, 61.578705, 5.1491203, null)</script></td>
     </tr>
     <tr>
-      <td>14_1428115001</td>
-      <td>61.455376</td>
-      <td>5.168818</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><div id="map14_1428115001" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1428115001, 61.455376, 5.168818, null)</script></td>
-    </tr>
-    <tr>
-      <td>14_1428115002</td>
-      <td>61.455364</td>
-      <td>5.1688004</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><div id="map14_1428115002" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1428115002, 61.455364, 5.1688004, null)</script></td>
-    </tr>
-    <tr>
       <td>15_0502095901</td>
       <td>60.86697</td>
       <td>10.620275</td>
@@ -3120,6 +3102,24 @@
       <td>Ferdig</td>
       <td>Ett fergeleie</td>
       <td><div id="map14_1417768401" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1417768401, 61.05014, 6.4060006, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1428115001</td>
+      <td>61.455376</td>
+      <td>5.168818</td>
+      <td>FredrikLindseth</td>
+      <td>Ferdig</td>
+      <td></td>
+      <td><div id="map14_1428115001" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1428115001, 61.455376, 5.168818, null)</script></td>
+    </tr>
+    <tr>
+      <td>14_1428115002</td>
+      <td>61.455364</td>
+      <td>5.1688004</td>
+      <td>FredrikLindseth</td>
+      <td>Ferdig</td>
+      <td></td>
+      <td><div id="map14_1428115002" style="width: 256px; height: 256px;position: relative"></div><script>create_map(map14_1428115002, 61.455364, 5.1688004, null)</script></td>
     </tr>
     <tr>
       <td>10_12531830</td>

@@ -27,7 +27,7 @@
     <script>
     function create_map(name, lat, lon, osm_url) {
 	var map = L.map(name)
-	map.setView([lat, lon], 15);
+	map.setView([lat, lon], 14);
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 	    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 	}).addTo(map);
@@ -43,7 +43,7 @@
 		dataType: "xml",
 		success: function (xml) {
 		    var layer = new L.OSM.DataLayer(xml).addTo(map);
-		    map.fitBounds(layer.getBounds(), {maxZoom:15});
+		    map.fitBounds(layer.getBounds(), {maxZoom:14});
 		}
 	    });
 	}
@@ -74,7 +74,7 @@
 	  
 	</h1>
 	
-	<p>Sist oppdatert 2016-05-28 10:25</p>
+	<p>Sist oppdatert 2016-05-28 10:31</p>
 	
 	<h3>
 	  Åpne i JOSM (Java OpenStreetmap Editor)
